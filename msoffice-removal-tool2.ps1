@@ -255,4 +255,3 @@ if (-not ($RunAgain)) {
     Invoke-RebootInSeconds $SecondsToReboot
 }
 
-Read-Host -Prompt "Press Enter to exit..."
