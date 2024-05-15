@@ -243,14 +243,12 @@ if (-not ($RunAgain)) {
             }
         }
     } else {
-        Invoke-Intro
         Stop-OfficeProcess
         Invoke-OfficeUninstall
         Invoke-SetupOffice365 "$Office365Setup_URL/upgrade.xml"
         Invoke-RebootInSeconds $SecondsToReboot
     }
 } else {
-    Invoke-Intro
     Stop-OfficeProcess
     Invoke-OfficeUninstall
     Invoke-SetupOffice365 "$Office365Setup_URL/upgrade.xml"
