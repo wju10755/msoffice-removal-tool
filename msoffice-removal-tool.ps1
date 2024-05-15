@@ -46,7 +46,8 @@ $SaRA_URL = "https://aka.ms/SaRA_CommandLineVersionFiles"
 $SaRA_ZIP = "$env:TEMP\SaRA.zip"
 $SaRA_DIR = "$env:TEMP\SaRA"
 $SaRA_EXE = "$SaRA_DIR\SaRAcmd.exe"
-$Office365Setup_URL = "https://advancestuff.hostedrmm.com/labtech/transfer/installers/OfficeSetup.exe"
+$Office365Setup_URL = "https://github.com/Admonstrator/msoffice-removal-tool/raw/main/office365-installer"
+#"https://advancestuff.hostedrmm.com/labtech/transfer/installers/OfficeSetup.exe"
 
 #-----------------------------------------------------------[Functions]------------------------------------------------------------
 Function Invoke-OfficeUninstall {
