@@ -202,7 +202,7 @@ if (-Not $Force) {
     }
 }
 
-Invoke-Intro
+#Invoke-Intro
 
 # Check if there is a stage to resume
 if (-not ($RunAgain)) {
