@@ -9,12 +9,8 @@
   By choosing -InstallOffice365 it tries to install Office 365 as well.
 .PARAMETER InstallOffice365
   Will install Office365 after removal.
-.PARAMETER SuppressReboot
-  Will supress the reboot after finishing the script.
 .PARAMETER UseSetupRemoval
   Will use the setup method to remove current Office installations instead of SaRA.
-.PARAMETER Force
-  Skip user-input.
 .PARAMETER RunAgain
   Skip Stage validation and runs the whole script again.
 .PARAMETER SecondsToReboot
@@ -23,11 +19,7 @@
   None
 .OUTPUTS
   Just output on screen
-.NOTES
-  Version:        1.1
-  Author:         Singleton Factory GmbH
-  Creation Date:  2023-01-18
-  Purpose/Change: New company, new luck
+
 .EXAMPLE
   .\msoffice-removal-tool.ps1 -InstallOffice365 -SuppressReboot
 #>
@@ -71,7 +63,7 @@ Function Invoke-OfficeUninstall {
 Function Invoke-SaRADownload {
     Start-BitsTransfer -Source "$SaRA_URL" -Destination "$SaRA_ZIP"
     if (Test-Path "$SaRA_ZIP") {
-        Write-Host "Unzipping ..."
+        Write-Host "Decompressing SaRA package ..."
         Expand-Archive -Path "$SaRA_ZIP" -DestinationPath "$SaRA_DIR" -Force
         if (Test-Path "$SaRA_DIR\DONE") {
             Move-Item "$SaRA_DIR\DONE\*" "$SaRA_DIR" -Force
@@ -96,7 +88,7 @@ Function Remove-SaRA {
 }
 
 Function Stop-OfficeProcess {
-    Write-Host "Stopping running Office applications ..."
+    Write-Host "Stopping active Office applications ..."
     $OfficeProcessesArray = "lync", "winword", "excel", "msaccess", "mstore", "infopath", "setlang", "msouc", "ois", "onenote", "outlook", "powerpnt", "mspub", "groove", "visio", "winproj", "graph", "teams"
     foreach ($ProcessName in $OfficeProcessesArray) {
         if (Get-Process -Name $ProcessName -ErrorAction SilentlyContinue) {
