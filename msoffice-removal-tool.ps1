@@ -35,7 +35,7 @@
 #---------------------------------------------------------[Initialisations]--------------------------------------------------------
 Param (
     [switch]$InstallOffice365 = $False,
-    [switch]$SuppressReboot = $True,
+    [switch]$SuppressReboot = $True ,
     [switch]$UseSetupRemoval = $True,
     [Switch]$Force = $True,
     [switch]$RunAgain = $False,
@@ -256,4 +256,4 @@ else {
     Invoke-SetupOffice365 "$Office365Setup_URL/upgrade.xml"
     Invoke-RebootInSeconds $SecondsToReboot
 }
-exit
+Read-Host -Prompt "Press Enter to exit..."
