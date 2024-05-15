@@ -176,10 +176,10 @@ Function Invoke-RebootInSeconds($Seconds) {
 }
 
 Function Set-CurrentStage($StageValue) {
-    if (-not (Test-Path "HKLM:\Software\OEM\Singleton-Factory-GmbH\M365\Install")) {
-        New-Item -Path "HKLM:\Software\OEM\Singleton-Factory-GmbH\M365\Install" -Force | Out-Null
+    if (-not (Test-Path "HKLM:\Software\OEM\MITS\M365\Install")) {
+        New-Item -Path "HKLM:\Software\OEM\MITS\M365\Install" -Force | Out-Null
     }
-    New-ItemProperty -Path "HKLM:\Software\OEM\Singleton-Factory-GmbH\M365\Install" -Name "CurrentStage" -Value $StageValue -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKLM:\Software\OEM\MITS\M365\Install" -Name "CurrentStage" -Value $StageValue -PropertyType String -Force | Out-Null
 }
 
 Function Invoke-Intro {
@@ -206,8 +206,8 @@ if (-Not $Force) {
 
 # Check if there is a stage to resume
 if (-not ($RunAgain)) {
-    if (Test-Path "HKLM:\Software\OEM\Singleton-Factory-GmbH\M365\Install") {
-        $CurrentStageValue = (Get-ItemProperty "HKLM:\Software\OEM\Singleton-Factory-GmbH\M365\Install").CurrentStage
+    if (Test-Path "HKLM:\Software\OEM\MITS\M365\Install") {
+        $CurrentStageValue = (Get-ItemProperty "HKLM:\Software\OEM\MITS\M365\Install").CurrentStage
         Switch ($CurrentStageValue) {
             1 {
                 Write-Host "Resuming Stage 1: Uninstalling Office ..."
