@@ -35,9 +35,9 @@
 #---------------------------------------------------------[Initialisations]--------------------------------------------------------
 Param (
     [switch]$InstallOffice365 = $False,
-    [switch]$SuppressReboot = $False,
-    [switch]$UseSetupRemoval = $False,
-    [Switch]$Force = $False,
+    [switch]$SuppressReboot = $True,
+    [switch]$UseSetupRemoval = $True,
+    [Switch]$Force = $True,
     [switch]$RunAgain = $False,
     [int]$SecondsToReboot = 60
 )
